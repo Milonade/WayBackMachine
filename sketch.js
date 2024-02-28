@@ -8,10 +8,13 @@ let flippedVideo;
 // To store the classification
 let label = "";
 
+let bg1;
+
 // Load the model first
 
 function preload() {
   classifier = ml5.imageClassifier(imageModelURL + "model.json");
+  bg1 = loadImage("asset/img/90s.jpg");
 }
 
 function setup() {
@@ -41,6 +44,9 @@ function draw() {
     textSize(16);
     textAlign(CENTER);
     text(label, width / 2, height - 4);
+  }
+  if (label === "IPod") {
+    document.body.style.backgroundImage = "url('asset/img/90s.jpg')";
   }
 }
 
