@@ -8,6 +8,16 @@
   <title>Wayback Machine</title>
 
   <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    body {
+      background-color: black;
+      background-size: contain;
+      background-position: center;
+      background-image: url('asset/img/FirstWallpaper.gif');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+  </style>
   <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/p5.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/addons/p5.dom.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
@@ -15,9 +25,9 @@
 </head>
 
 <body>
-  <div id="error-message">
-    <img src="asset/img/error-message.gif" alt="Error Message">
-    <button id="error-button"></button>
+  <div id="message">
+    <img src="asset/img/error-message.gif" alt="Message">
+    <button id="button"></button>
   </div>
   <script type="text/javascript" src="sketch.js"></script>
 
@@ -25,7 +35,7 @@
     function setup() {
       // Record the start time
       document
-        .getElementById("error-button")
+        .getElementById("button")
         .addEventListener("click", function () {
           window.location.href = "/90s.html";
         });

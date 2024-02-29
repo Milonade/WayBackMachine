@@ -3,14 +3,13 @@ html, body {
   padding: 0;
 }
 
-body {
-  background-image: url('asset/img/Wallpaper.gif');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-#error-message {
+
+#message {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -19,7 +18,7 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 1);
 }
 
-#error-button {
+#button {
   position: absolute;
   top: 73%;
   left: 85%;
