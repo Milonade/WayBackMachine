@@ -22,13 +22,14 @@ function setup() {
   // Record the start time
   startTime = millis();
 
-  createCanvas(160, 120);
+  createCanvas(160, 50);
   // Create the video
   video = createCapture(VIDEO);
   video.size(160, 120);
-  video.hide();
 
   flippedVideo = ml5.flipImage(video);
+  video.hide(); // Hide the video
+  flippedVideo.hide();
   // Start classifying
   classifyVideo();
 }

@@ -1,26 +1,13 @@
-function setup() {
-  // Record the start time
-  startTime = millis();
-  createCanvas(160, 120);
-  // Create the video
-  video = createCapture(VIDEO);
-  video.size(160, 120);
-  video.hide();
-
-  flippedVideo = ml5.flipImage(video);
-  // Start classifying
-  classifyVideo();
-}
+/**
+ * Draws the main canvas and handles the timer logic.
+ */
 function draw() {
+  background(0, 0, 0);
   let elapsedTime = millis() - startTime;
   let secondsElapsed = Math.floor(elapsedTime / 1000);
   let timeRemaining = countdownTime - secondsElapsed;
   timeRemaining = max(timeRemaining, 0);
-
-  background(0, 0, 0, 0);
-  // Draw the video
   if (video) {
-    image(flippedVideo, 0, 0);
     function timerFunction() {
       // Your timer logic here
       console.log("Timer function called");
