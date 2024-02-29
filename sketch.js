@@ -7,8 +7,10 @@ let video;
 let flippedVideo;
 // To store the classification
 let label = "";
-
 let bg1;
+
+let startTime;
+let countdownTime = 30; // 30 seconds
 
 // Load the model first
 
@@ -18,13 +20,18 @@ function preload() {
 }
 
 function setup() {
+  // Record the start time
+  startTime = millis();
   document
     .getElementById("error-button")
     .addEventListener("click", function () {
-      createCanvas(320, 260);
+      document.body.style.backgroundImage = "url('asset/img/90s.jpg')";
+      document.getElementById("error-message").style.display = "none"; // Hide the "message-error" element
+
+      createCanvas(160, 120);
       // Create the video
       video = createCapture(VIDEO);
-      video.size(320, 240);
+      video.size(160, 120);
       video.hide();
 
       flippedVideo = ml5.flipImage(video);
@@ -33,20 +40,31 @@ function setup() {
     });
 }
 
+//window.location.href = "/sound.html";
+
 function draw() {
+  let elapsedTime = millis() - startTime;
+  let secondsElapsed = Math.floor(elapsedTime / 1000);
+  let timeRemaining = countdownTime - secondsElapsed;
+  timeRemaining = max(timeRemaining, 0);
+
   background(0, 0, 0, 0);
   // Draw the video
   if (video) {
     image(flippedVideo, 0, 0);
-
-    // Draw the label
+    // Display the timer
     fill(255);
+    textSize(32);
+    textAlign(CENTER, TOP);
+    text("Timer: " + timeRemaining, width / 2, 10);
+    // Draw the label
+    /*fill(255);
     textSize(16);
     textAlign(CENTER);
-    text(label, width / 2, height - 4);
+    text(label, width / 2, height - 4);*/
   }
   if (label === "IPod") {
-    document.body.style.backgroundImage = "url('asset/img/90s.jpg')";
+    document.body.style.backgroundImage = "url('asset/img/2000s.png')";
   }
 }
 
