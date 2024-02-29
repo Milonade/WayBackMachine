@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wayback Machine</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            background-image: url("asset/img/2000s.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/addons/p5.dom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" src="sketch.js"></script>
+    <script>
+        function setup() {
+            // Record the start time
+            startTime = millis();
+            createCanvas(160, 120);
+            // Create the video
+            video = createCapture(VIDEO);
+            video.size(160, 120);
+            video.hide();
+
+            flippedVideo = ml5.flipImage(video);
+            // Start classifying
+            classifyVideo();
+        }
+        function draw() {
+            let elapsedTime = millis() - startTime;
+            let secondsElapsed = Math.floor(elapsedTime / 1000);
+            let timeRemaining = countdownTime - secondsElapsed;
+            timeRemaining = max(timeRemaining, 0);
+
+            background(0, 0, 0, 0);
+            // Draw the video
+            if (video) {
+                image(flippedVideo, 0, 0);
+                function timerFunction() {
+                    // Your timer logic here
+                    console.log("Timer function called");
+                    // Display the timer
+                    fill(255);
+                    textSize(32);
+                    textAlign(CENTER, TOP);
+                    text("Timer: " + timeRemaining, width / 2, 10);
+                    // If the timer is at 0, change the background
+                    if (timeRemaining === 0) {
+                        window.location.href = "/index.html";
+                    }
+                }
+                timerFunction();
+            }
+            /*
+            if (label === "IPod") {
+                window.location.href = "/90s.html";
+                timerFunction();
+            }*/
+        }
+
+        // Get a prediction for the current video frame
+        function classifyVideo() {
+            flippedVideo = ml5.flipImage(video);
+            classifier.classify(flippedVideo, gotResult);
+            flippedVideo.remove();
+        }
+
+        // When we get a result
+        function gotResult(error, results) {
+            // If there is an error
+            if (error) {
+                console.error(error);
+                return;
+            }
+            // The results are in an array ordered by confidence.
+            // console.log(results[0]);
+            label = results[0].label;
+            // Classify again!
+            classifyVideo();
+        }
+    </script>
+</body>
+
+</html>

@@ -20,6 +20,17 @@
     <button id="error-button"></button>
   </div>
   <script type="text/javascript" src="sketch.js"></script>
+
+  <script>
+    function setup() {
+      // Record the start time
+      document
+        .getElementById("error-button")
+        .addEventListener("click", function () {
+          window.location.href = "/90s.html";
+        });
+    }
+  </script>
 </body>
 
 </html>
