@@ -16,7 +16,6 @@ let countdownTime = 30; // 30 seconds
 
 function preload() {
   classifier = ml5.imageClassifier(imageModelURL + "model.json");
-  bg1 = loadImage("asset/img/90s.jpg");
 }
 
 function setup() {
