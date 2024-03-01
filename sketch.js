@@ -10,7 +10,7 @@ let label = "";
 let bg1;
 
 let startTime;
-let countdownTime = 30; // 30 seconds
+let countdownTime = 60; // 30 seconds
 let myFont;
 
 function preload() {

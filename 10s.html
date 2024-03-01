@@ -8,16 +8,15 @@
     <title>Wayback Machine</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <audio autoplay="autoplay">
-        <source src="/asset/sound/2010.mp4" type="audio/mp3"> />
-    </audio>
     <style>
         body {
             background-position: center top;
             background-color: black;
-            background-size: 200% 200% contain;
             background-image: url("asset/img/2010.gif");
+            background-size: 2016px 1260px;
+            /* Change the value to adjust the size */
             background-repeat: no-repeat;
+
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/p5.min.js"></script>
@@ -26,6 +25,7 @@
 </head>
 
 <body>
+    <audio src="/asset/sound/2010.mp4" type="audio/mpeg" autoplay></audio>
     <script type="text/javascript" src="sketch.js"></script>
     <script>
         var locationLink = "/20s.html";
