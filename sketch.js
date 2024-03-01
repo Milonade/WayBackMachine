@@ -22,7 +22,7 @@ function setup() {
   // Record the start time
   startTime = millis();
 
-  createCanvas(160, 50);
+  createCanvas(160, 40);
   // Create the video
   video = createCapture(VIDEO);
   video.size(160, 120);
