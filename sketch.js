@@ -13,8 +13,6 @@ let startTime;
 let countdownTime = 30; // 30 seconds
 let myFont;
 
-// Load the model first
-
 function preload() {
   classifier = ml5.imageClassifier(imageModelURL + "model.json");
   myFont = loadFont(typography);
